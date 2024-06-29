@@ -62,7 +62,7 @@
 
         function updateMatrix() {
             adjustMatrixSize();
-            setInterval(adjustMatrixSize, 50);
+            setInterval(adjustMatrixSize, 200);
         }
 
         window.addEventListener('resize', adjustMatrixSize);

@@ -243,7 +243,7 @@
         });
 
 
-        // Automated checkbox checking script for testing, uncomment with "ctrl + /" to use the script to unlock the reverse captcha
+        // Automated checkbox checking script for testing, uncomment the code below with "ctrl + /" to use the script to unlock the reverse captcha
         // !!! Beware, even with the script, if it detects mouse movement
         //     the captcha will fail, there must be no user input and the captcha must be completed by a bot or a script ONLY to pass !!!
 
