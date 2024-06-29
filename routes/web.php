@@ -8,7 +8,7 @@ Route::get('/', function () {
 
 Route::post('/validate-recaptcha', function (Illuminate\Http\Request $request) {
     if ($request->has('recaptcha-checkbox')) {
-        return 'Bot verified successfully';
+        return response()->view('matrix', [], 200)->header('Content-Type', 'text/html');
     }
 
     return 'Verification failed';

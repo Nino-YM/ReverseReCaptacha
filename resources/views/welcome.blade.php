@@ -168,7 +168,7 @@
                 <input type="checkbox" id="recaptcha-checkbox" name="recaptcha-checkbox">
             </div>
             <div class="recaptcha-label">
-                <p>I'm not a robot</p>
+                <p>I'm not a human</p>
             </div>
             <div class="recaptcha-branding">
                 <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCaptcha Logo">
