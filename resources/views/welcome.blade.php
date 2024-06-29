@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel Reverse reCaptcha</title>
+    <title>Reverse reCaptcha</title>
 
     <!-- Styles -->
     <style>
@@ -97,7 +97,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-left: 120px;
+            margin-left: 110px;
         }
         .recaptcha-branding img {
             width: 40px;
@@ -132,10 +132,10 @@
             border-radius: 3px;
             color: white;
             font-size: 12px;
-            width: 340px; /* Increased width */
+            width: 340px;
             text-align: center;
             opacity: 0;
-            display: none; /* Ensure it's hidden initially */
+            display: none;
         }
         .notification.show {
             display: block;
@@ -225,7 +225,6 @@
             spinner.style.display = 'block';
             checkbox.style.display = 'none';
 
-            // Simulate loading
             setTimeout(() => {
                 spinner.style.display = 'none';
                 if (isBot) {
@@ -234,13 +233,13 @@
                     setTimeout(() => {
                         document.getElementById('recaptcha-form').submit();
                         console.log('Form submitted by bot');
-                    }, 1000); // Added delay before redirecting for bots
+                    }, 1000);
                 } else {
                     cross.style.display = 'flex';
                     notification.classList.add('show');
                     console.log('Failed reCaptcha: You\'re not a bot!');
                 }
-            }, 1000); // Simulate loading time
+            }, 1000);
         });
         // Automated checkbox checking for testing
         function simulateBotActions() {
