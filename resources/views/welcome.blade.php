@@ -16,6 +16,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            position: relative;
         }
         .recaptcha-box {
             background: #fff;
@@ -25,15 +29,15 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             align-items: center;
-            width: 304px;
+            width: 340px;
             height: 78px;
-            position: relative;
         }
         .recaptcha-checkbox {
             position: relative;
             width: 30px;
             height: 30px;
             margin-right: 10px;
+            margin-left: 20px;
         }
         .recaptcha-checkbox input[type="checkbox"] {
             position: absolute;
@@ -80,6 +84,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            margin-left: 0;
         }
         .recaptcha-label p {
             margin: 0;
@@ -92,7 +97,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-left: 110px;
+            margin-left: 120px;
         }
         .recaptcha-branding img {
             width: 40px;
@@ -107,38 +112,73 @@
             color: #999;
             position: absolute;
             bottom: 15px;
-            right: 5px;
+            right: 10px;
         }
         .privacy-terms-text {
             font-size: 10px;
             color: #999;
             position: absolute;
             bottom: 5px;
-            right: 25px;
+            right: 30px;
         }
-
+        .notification {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #EC5163;
+            border: 1px solid #ffcccc;
+            border-radius: 3px;
+            color: white;
+            font-size: 12px;
+            width: 340px; /* Increased width */
+            text-align: center;
+            opacity: 0;
+            display: none; /* Ensure it's hidden initially */
+        }
+        .notification.show {
+            display: block;
+            animation: fadeIn 1s forwards;
+        }
+        .notification a {
+            color: white;
+            text-decoration: underline;
+        }
+        .notification a:hover {
+            color: black;
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <div class="recaptcha-box">
-        <div class="recaptcha-checkbox">
-            <div class="spinner"></div>
-            <div class="checkmark">✔</div>
-            <div class="cross">✖</div>
-            <input type="checkbox" id="recaptcha-checkbox" name="recaptcha-checkbox">
+    <div class="container">
+        <div class="recaptcha-box">
+            <div class="recaptcha-checkbox">
+                <div class="spinner"></div>
+                <div class="checkmark">✔</div>
+                <div class="cross">✖</div>
+                <input type="checkbox" id="recaptcha-checkbox" name="recaptcha-checkbox">
+            </div>
+            <div class="recaptcha-label">
+                <p>I'm not a robot</p>
+            </div>
+            <div class="recaptcha-branding">
+                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCaptcha Logo">
+            </div>
+            <div class="reverse-recaptcha-text">Reverse reCAPTCHA</div>
+            <div class="privacy-terms-text">Privacy - Terms</div>
         </div>
-        <div class="recaptcha-label">
-            <p>I'm not a robot</p>
+        <div class="notification" id="notification">
+            You have failed the Reverse reCAPTCHA, you must be human. If you are a robot click <a href="javascript:location.reload()">here</a> to reload the page to try again.
         </div>
-        <div class="recaptcha-branding">
-            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCaptcha Logo">
-        </div>
-        <div class="reverse-recaptcha-text">Reverse reCAPTCHA</div>
-        <div class="privacy-terms-text">Privacy - Terms</div>
     </div>
     <form id="recaptcha-form" action="/validate-recaptcha" method="POST" style="display:none;">
         @csrf
@@ -180,6 +220,7 @@
             const spinner = document.querySelector('.spinner');
             const checkmark = document.querySelector('.checkmark');
             const cross = document.querySelector('.cross');
+            const notification = document.getElementById('notification');
 
             spinner.style.display = 'block';
             checkbox.style.display = 'none';
@@ -196,6 +237,7 @@
                     }, 1000); // Added delay before redirecting for bots
                 } else {
                     cross.style.display = 'flex';
+                    notification.classList.add('show');
                     console.log('Failed reCaptcha: You\'re not a bot!');
                 }
             }, 1000); // Simulate loading time
