@@ -241,15 +241,19 @@
                 }
             }, 1000);
         });
-        // Automated checkbox checking for testing
+
+
+        // Automated checkbox checking script for testing, uncomment with "ctrl + /" to use the script to unlock the reverse captcha
+        // !!! Beware, even with the script, if it detects mouse movement
+        //     the captcha will fail, there must be no user input and the captcha must be completed by a bot or a script ONLY to pass !!!
+
+
         // function simulateBotActions() {
         //     const checkbox = document.getElementById('recaptcha-checkbox');
         //     checkbox.checked = true;
         //     console.log('Checkbox checked by bot');
         //     checkbox.dispatchEvent(new Event('change'));
         // }
-
-        // // Call the function to simulate bot actions after the page loads
         // window.onload = function() {
         //     simulateBotActions();
         // };
