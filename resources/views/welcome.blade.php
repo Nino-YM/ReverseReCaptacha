@@ -242,17 +242,17 @@
             }, 1000);
         });
         // Automated checkbox checking for testing
-        function simulateBotActions() {
-            const checkbox = document.getElementById('recaptcha-checkbox');
-            checkbox.checked = true;
-            console.log('Checkbox checked by bot');
-            checkbox.dispatchEvent(new Event('change'));
-        }
+        // function simulateBotActions() {
+        //     const checkbox = document.getElementById('recaptcha-checkbox');
+        //     checkbox.checked = true;
+        //     console.log('Checkbox checked by bot');
+        //     checkbox.dispatchEvent(new Event('change'));
+        // }
 
-        // Call the function to simulate bot actions after the page loads
-        window.onload = function() {
-            simulateBotActions();
-        };
+        // // Call the function to simulate bot actions after the page loads
+        // window.onload = function() {
+        //     simulateBotActions();
+        // };
 
     </script>
 </body>
